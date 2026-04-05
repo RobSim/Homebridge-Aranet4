@@ -1,0 +1,71 @@
+{
+  "pluginAlias": "Aranet4",
+  "pluginType": "platform",
+  "singular": true,
+  "headerDisplay": "Connect your Aranet4 CO2 sensor to HomeKit with full history support.",
+  "footerDisplay": "For help, see the [README](https://github.com/RobSim/homebridge-aranet4-advanced#readme).",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Platform Name",
+        "type": "string",
+        "default": "Aranet4",
+        "required": true,
+        "description": "Display name for this platform instance."
+      },
+      "devices": {
+        "title": "Devices",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Device Name",
+              "type": "string",
+              "default": "Aranet4",
+              "description": "A friendly name for this sensor."
+            },
+            "address": {
+              "title": "MAC Address",
+              "type": "string",
+              "description": "Bluetooth MAC address of the Aranet4 device (e.g., AA:BB:CC:DD:EE:FF). Leave blank for auto-discovery.",
+              "pattern": "^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$"
+            },
+            "pollingInterval": {
+              "title": "Polling Interval (seconds)",
+              "type": "integer",
+              "default": 60,
+              "minimum": 60,
+              "maximum": 3600,
+              "description": "How often to read sensor data, in seconds. Minimum 60s."
+            },
+            "co2AlertThreshold": {
+              "title": "CO2 Alert Threshold (ppm)",
+              "type": "integer",
+              "default": 1000,
+              "minimum": 400,
+              "maximum": 5000,
+              "description": "CO2 level (ppm) at which CarbonDioxideDetected triggers."
+            },
+            "lowBatteryThreshold": {
+              "title": "Low Battery Threshold (%)",
+              "type": "integer",
+              "default": 15,
+              "minimum": 5,
+              "maximum": 50,
+              "description": "Battery percentage below which low-battery alert triggers."
+            },
+            "enableHistory": {
+              "title": "Enable Eve History",
+              "type": "boolean",
+              "default": true,
+              "description": "Enable historical graphs in the Eve app."
+            }
+          },
+          "required": ["name"]
+        }
+      }
+    }
+  }
+}

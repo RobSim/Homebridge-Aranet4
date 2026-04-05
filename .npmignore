@@ -1,0 +1,15 @@
+src/
+test/
+.editorconfig
+.eslintrc.json
+tsconfig.json
+jest.config.ts
+jest.config.js
+nodemon.json
+.DS_Store
+*.tgz
+.github/
+PROJECT_PLAN.md
+TESTING.md
+CHANGELOG.md
+.claude/
