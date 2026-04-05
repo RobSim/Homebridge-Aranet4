@@ -1,7 +1,7 @@
 import {
   Logger,
 } from 'homebridge';
-import noble from '@homebridge/noble';
+import noble, { Peripheral } from '@stoprocent/noble';
 import {
   ARANET4_NAME_PREFIX,
   Aranet4Reading,
@@ -74,7 +74,7 @@ export class BleManager {
 
   // Stored references for proper listener cleanup
   private readonly onStateChange: (state: string) => void;
-  private readonly onDiscover: (peripheral: noble.Peripheral) => void;
+  private readonly onDiscover: (peripheral: Peripheral) => void;
   private readonly onScanStop: () => void;
   private readonly onWarning: (message: string) => void;
 
@@ -86,7 +86,7 @@ export class BleManager {
       this.handleStateChange(state);
     };
 
-    this.onDiscover = (peripheral: noble.Peripheral) => {
+    this.onDiscover = (peripheral: Peripheral) => {
       this.handleDiscovery(peripheral);
     };
 
@@ -327,7 +327,7 @@ export class BleManager {
   // Discovery — process each advertisement
   // -----------------------------------------------------------------------
 
-  private handleDiscovery(peripheral: noble.Peripheral): void {
+  private handleDiscovery(peripheral: Peripheral): void {
     // Top-level catch: an uncaught exception here propagates into noble's
     // EventEmitter and can crash the entire Homebridge process.
     try {
@@ -338,7 +338,7 @@ export class BleManager {
     }
   }
 
-  private processAdvertisement(peripheral: noble.Peripheral): void {
+  private processAdvertisement(peripheral: Peripheral): void {
     const mfgData = peripheral.advertisement?.manufacturerData;
 
     // Fast path: check manufacturer data company ID first — avoids address

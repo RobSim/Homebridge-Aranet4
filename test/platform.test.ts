@@ -8,7 +8,7 @@
 import { API, Logger, PlatformAccessory, PlatformConfig } from 'homebridge';
 
 // Mock noble before importing platform (noble initializes on import)
-jest.mock('@homebridge/noble', () => ({
+jest.mock('@stoprocent/noble', () => ({
   on: jest.fn(),
   removeListener: jest.fn(),
   startScanning: jest.fn(),

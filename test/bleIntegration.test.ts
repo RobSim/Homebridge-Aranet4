@@ -29,7 +29,7 @@ mockNoble.startScanning = jest.fn((_uuids: string[], _dup: boolean, cb?: (err?: 
 });
 mockNoble.stopScanning = jest.fn();
 
-jest.mock('@homebridge/noble', () => mockNoble);
+jest.mock('@stoprocent/noble', () => mockNoble);
 
 import { BleManager } from '../src/bleManager';
 import { Aranet4DeviceConfig, DEFAULT_POLLING_INTERVAL } from '../src/settings';
